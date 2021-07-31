@@ -25,7 +25,7 @@ class MemberController extends Controller
 
         $dir = 'asc';
         $sort = 'name';
-        $defaultHorse = 0;
+        $defaultMember = 0;
         $reservoirs = Reservoir::orderBy('title') -> get();
         $s = '';
 
@@ -43,15 +43,15 @@ class MemberController extends Controller
                 $dir = 'desc';
             } 
             
-            elseif ('experiance'== $request -> sort_by && 'asc'== $request -> dir) {
-                $members = Member::orderBy('experiance') -> paginate(10)->withQueryString();
-                $sort = 'experiance';
+            elseif ('title'== $request -> sort_by && 'asc'== $request -> dir) {
+                $members = Member::orderBy('title') -> paginate(10)->withQueryString();
+                $sort = 'title';
             } 
             
-            elseif ('experiance'== $request -> sort_by && 'desc'== $request -> dir) {
-                $members = Member::orderBy('experiance', 'desc') -> paginate(10)->withQueryString();
+            elseif ('title'== $request -> sort_by && 'desc'== $request -> dir) {
+                $members = Member::orderBy('title', 'desc') -> paginate(10)->withQueryString();
                 $dir = 'desc';
-                $sort = 'experiance';
+                $sort = 'title';
             } 
             
             else {
@@ -63,7 +63,7 @@ class MemberController extends Controller
 
         elseif ($request -> reservoir_id) {
             $members = Member::where('reservoir_id', (int)$request -> reservoir_id) -> paginate(10)->withQueryString();
-            $defaultHorse = (int)$request -> reservoir_id;
+            $defaultMember = (int)$request -> reservoir_id;
         }
 
         // Paieška
@@ -98,8 +98,8 @@ class MemberController extends Controller
      */
     public function create()
     {
-        $members = Member::orderBy('name')->get();
-        return view('member.create', ['members' => $members]);
+        $reservoirs = Reservoir::orderBy('title')->get();
+        return view('member.create', ['reservoirs' => $reservoirs]);
     }
 
     /**
@@ -157,7 +157,8 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        //
+        $reservoir = Reservoir::all();
+        return view('member.edit', ['member' => $member, 'reservoirs' => $reservoirs]);
     }
 
     /**
@@ -169,7 +170,31 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        //
+        $validator = Validator::make($request->all(),
+        [
+            'member_name' => ['required', 'min:3', 'max:100', 'alpha'],
+            'member_surname' => ['required', 'min:3', 'max:150', 'alpha'],
+            'member_live' => ['required', 'min:1', 'max:100'],
+            'member_expriance' => ['required', 'min:1', 'max:150'],
+            'member_registered' => ['required', 'min:1', 'max:150'],
+            'reservoir_id' => ['required', 'integer', 'min:1']
+        ],
+        );
+        
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+        
+        $member = new Member;
+        $member->name = $request->member_name;
+        $member->surname = $request->member_surname;
+        $member->live = $request->member_live;
+        $member->experience = $request->member_experience;
+        $member->registered = $request->member_registered;
+        $member->reservoir_id = $request->reservoir_id;
+        $member->save();
+        return redirect()->route('member.index')->with('success_message', 'Member updated.');
     }
 
     /**
@@ -180,6 +205,7 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        //
+        $member->delete();
+        return redirect()->route('member.index')->with('success_message', 'Member deleted.');
     }
 }
