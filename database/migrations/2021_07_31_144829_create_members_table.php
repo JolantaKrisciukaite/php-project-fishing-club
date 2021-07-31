@@ -21,6 +21,7 @@ class CreateMembersTable extends Migration
             $table->integer('experience');
             $table->integer('registered');
             $table->unsignedBigInteger('reservoir_id');
+            $table->foreign('reservoir_id')->references('id')->on('reservoirs');
             $table->timestamps();
         });
     }
