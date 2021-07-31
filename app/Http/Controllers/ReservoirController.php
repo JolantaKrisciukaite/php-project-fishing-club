@@ -9,10 +9,10 @@ use Validator;
 
 class ReservoirController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
@@ -193,8 +193,8 @@ class ReservoirController extends Controller
      */
     public function destroy(Reservoir $reservoir)
     {
-        if($reservoir->newMemberReservoir>count()){
-            return redirect()->route('reservoir.index')->with('info_message', 'Couldn\'\t delete - Reservoir has Member.');
+        if($reservoir->reservoirHasMembers->count()){
+            return redirect()->route('reservoir.index')->with('info_message', 'Couldn\'t delete - Reservoir has Member.');
         }
         $reservoir->delete();
         return redirect()->route('reservoir.index')->with('success_message', 'Reservoir deleted successfully.');

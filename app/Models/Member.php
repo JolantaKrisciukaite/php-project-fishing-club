@@ -9,6 +9,6 @@ class Member extends Model
 {
     public function memberReservoir()
     {
-        return $this->belongsTo('App\Models\Menu', 'menu_id', 'id');
+        return $this->belongsTo('App\Models\Reservoir', 'reservoir_id', 'id');
     }
 }
