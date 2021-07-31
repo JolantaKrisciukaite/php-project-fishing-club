@@ -21,10 +21,10 @@ class MemberController extends Controller
      */
     public function index(Request $request)
     {
-        $members = Member::orderBy('live', 'asc') -> paginate(10)->withQueryString();
+        $members = Member::orderBy('name', 'asc') -> paginate(10)->withQueryString();
 
         $dir = 'asc';
-        $sort = 'live';
+        $sort = 'name';
         $defaultHorse = 0;
         $reservoirs = Reservoir::orderBy('title') -> get();
         $s = '';
@@ -34,24 +34,24 @@ class MemberController extends Controller
 
         if ($request -> sort_by && $request -> dir) {
 
-            if ('bet'== $request -> sort_by && 'asc'== $request -> dir) {
-                $members = Member::orderBy('bet') -> paginate(10)->withQueryString();
-            } 
-            
-            elseif ('bet'== $request -> sort_by && 'desc'== $request -> dir) {
-                $members = Member::orderBy('bet', 'desc') -> paginate(10)->withQueryString();
-                $dir = 'desc';
-            } 
-            
-            elseif ('name'== $request -> sort_by && 'asc'== $request -> dir) {
+            if ('name'== $request -> sort_by && 'asc'== $request -> dir) {
                 $members = Member::orderBy('name') -> paginate(10)->withQueryString();
-                $sort = 'name';
             } 
             
             elseif ('name'== $request -> sort_by && 'desc'== $request -> dir) {
                 $members = Member::orderBy('name', 'desc') -> paginate(10)->withQueryString();
                 $dir = 'desc';
-                $sort = 'name';
+            } 
+            
+            elseif ('experiance'== $request -> sort_by && 'asc'== $request -> dir) {
+                $members = Member::orderBy('experiance') -> paginate(10)->withQueryString();
+                $sort = 'experiance';
+            } 
+            
+            elseif ('experiance'== $request -> sort_by && 'desc'== $request -> dir) {
+                $members = Member::orderBy('experiance', 'desc') -> paginate(10)->withQueryString();
+                $dir = 'desc';
+                $sort = 'experiance';
             } 
             
             else {
@@ -86,7 +86,7 @@ class MemberController extends Controller
             'dir' => $dir,
             'sort' => $sort,
             'reservoirs' => $reservoirs,
-            'defaultHorse' => $defaultHorse,
+            'defaultReservoir' => $defaultReservoir,
             's' => $s
         ]);
     }
@@ -98,7 +98,8 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        $members = Member::orderBy('name')->get();
+        return view('better.create', ['members' => $members]);
     }
 
     /**
