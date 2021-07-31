@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Reservoir extends Model
 {
     use HasFactory;
+
+    public function newMemberReservoir()
+    {
+        return $this->hasMany('App\Models\Outfit', 'master_id', 'id');
+    }
+
 }
