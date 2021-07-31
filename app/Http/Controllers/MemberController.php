@@ -3,18 +3,92 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\Reservoir;
 use Illuminate\Http\Request;
+use Validator;
 
 class MemberController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $members = Member::orderBy('live', 'asc') -> paginate(10)->withQueryString();
+
+        $dir = 'asc';
+        $sort = 'live';
+        $defaultHorse = 0;
+        $reservoirs = Reservoir::orderBy('title') -> get();
+        $s = '';
+
+
+        // Rušiavimas
+
+        if ($request -> sort_by && $request -> dir) {
+
+            if ('bet'== $request -> sort_by && 'asc'== $request -> dir) {
+                $members = Member::orderBy('bet') -> paginate(10)->withQueryString();
+            } 
+            
+            elseif ('bet'== $request -> sort_by && 'desc'== $request -> dir) {
+                $members = Member::orderBy('bet', 'desc') -> paginate(10)->withQueryString();
+                $dir = 'desc';
+            } 
+            
+            elseif ('name'== $request -> sort_by && 'asc'== $request -> dir) {
+                $members = Member::orderBy('name') -> paginate(10)->withQueryString();
+                $sort = 'name';
+            } 
+            
+            elseif ('name'== $request -> sort_by && 'desc'== $request -> dir) {
+                $members = Member::orderBy('name', 'desc') -> paginate(10)->withQueryString();
+                $dir = 'desc';
+                $sort = 'name';
+            } 
+            
+            else {
+                $member = Member::paginate(10)->withQueryString();
+            }
+        }
+
+        // Filtravimas
+
+        elseif ($request -> reservoir_id) {
+            $members = Member::where('reservoir_id', (int)$request -> reservoir_id) -> paginate(10)->withQueryString();
+            $defaultHorse = (int)$request -> reservoir_id;
+        }
+
+        // Paieška
+
+        elseif ($request -> s) {
+            $members = Member::where('name', 'like', '%'.$request -> s.'%') -> paginate(10)->withQueryString();
+            $s = $request -> s;
+        } 
+        
+        elseif ($request -> do_search) {
+            $members = Member::where('name', 'like', '') -> paginate(10)->withQueryString();
+        } 
+        
+        else {
+            $members = Member::paginate(10)->withQueryString();
+        }
+
+        return view('member.index', [
+            'members' => $members,
+            'dir' => $dir,
+            'sort' => $sort,
+            'reservoirs' => $reservoirs,
+            'defaultHorse' => $defaultHorse,
+            's' => $s
+        ]);
     }
 
     /**
