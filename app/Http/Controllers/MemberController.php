@@ -21,11 +21,12 @@ class MemberController extends Controller
      */
     public function index(Request $request)
     {
+        
         $members = Member::orderBy('name', 'asc') -> paginate(10)->withQueryString();
 
         $dir = 'asc';
         $sort = 'name';
-        $defaultMember = 0;
+        $defaultReservoir = 0;
         $reservoirs = Reservoir::orderBy('title') -> get();
         $s = '';
 
