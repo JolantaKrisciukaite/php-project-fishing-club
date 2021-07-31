@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <h3 class="titleBetters">Members</h3>
+                        <h3 class="titleMenu">Members</h3>
 
                         <div>
                             <form action="{{ route('member.index') }}" method="get" class="sort-form">
@@ -39,7 +39,7 @@
                                     <legend>Filter by</legend>
                                     <select class="index" name="reservoir_id"><br>
                                         @foreach ($reservoirs as $reservoir)
-                                            <option value="{{ $reservoir->id }}" @if($defaultHorse == $reservoir->id) selected @endif>
+                                            <option value="{{ $reservoir->id }}" @if($defaultReservoir == $reservoir->id) selected @endif>
                                                 Reservoir title: {{ $reservoir->title }}
                                             </option>
                                         @endforeach
@@ -68,8 +68,8 @@
 
                         @forelse ($members as $member)
                             <div class="index">Member name: {{ $member->name }}</div>
-                            <div class="index">Member surname: {{ $member->surname }} ({{ $member->live}} €)</div>
-                            <div class="index">Reservoir name: {{ $member->memberReservoir->name }}
+                            <div class="index">Member surname: {{ $member->surname }}</div>
+                            <div class="index">Reservoir title: {{ $reservoir->title }}
                                 {{ $member->memberReservoir->surname }}</div>
                             <form method="POST" action="{{ route('member.destroy', [$member]) }}">
                                 <a href="{{ route('member.edit', [$member]) }}" class="editButton">Edit</a>

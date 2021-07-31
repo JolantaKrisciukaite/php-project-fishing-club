@@ -6,7 +6,7 @@
             <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
                 <div class="card">
 
-                    <h3 class="titleHorses">Create new member</h3>
+                    <h3 class="titleReservoir">Create new member</h3>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('member.store') }}">

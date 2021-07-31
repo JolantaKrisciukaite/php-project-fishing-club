@@ -5,7 +5,7 @@
    <div class="row justify-content-center">
         <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
            <div class="card">
-               <div class="card-header">Edit new member</div>
+               <div class="titleReservoir">Edit new member</div>
 
                <div class="card-body">
                 <form method="POST" action="{{route('member.update',[$member])}}">
@@ -35,7 +35,15 @@
                         <input type="text" name="member_registered" class="form-control" value="{{old('member_registered', $member->registered)}}">
                     </div>
                       
-                </select>
+                    <select class="index" name="reservoir_id"><br>
+                        @foreach ($reservoirs as $reservoir)
+                            <option value="{{ $reservoir->id }}">
+                                Title: {{$reservoir->title}} 🐳
+                                Area: {{$reservoir->area}} 💧
+                            </option>
+                        @endforeach
+                    </select>
+                      
                     @csrf
                     <button class="editButton" type="submit">Edit</button>
                 </form>

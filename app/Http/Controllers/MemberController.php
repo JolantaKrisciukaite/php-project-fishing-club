@@ -44,15 +44,15 @@ class MemberController extends Controller
                 $dir = 'desc';
             } 
             
-            elseif ('title'== $request -> sort_by && 'asc'== $request -> dir) {
-                $members = Member::orderBy('title') -> paginate(10)->withQueryString();
-                $sort = 'title';
+            elseif ('surname'== $request -> sort_by && 'asc'== $request -> dir) {
+                $members = Member::orderBy('surname') -> paginate(10)->withQueryString();
+                $sort = 'surname';
             } 
             
-            elseif ('title'== $request -> sort_by && 'desc'== $request -> dir) {
-                $members = Member::orderBy('title', 'desc') -> paginate(10)->withQueryString();
+            elseif ('surname'== $request -> sort_by && 'desc'== $request -> dir) {
+                $members = Member::orderBy('surname', 'desc') -> paginate(10)->withQueryString();
                 $dir = 'desc';
-                $sort = 'title';
+                $sort = 'surname';
             } 
             
             else {
@@ -117,7 +117,7 @@ class MemberController extends Controller
             'member_name' => ['required', 'min:3', 'max:100', 'alpha'],
             'member_surname' => ['required', 'min:3', 'max:150', 'alpha'],
             'member_live' => ['required', 'min:1', 'max:100'],
-            'member_expriance' => ['required', 'min:1', 'max:150'],
+            'member_experience' => ['required', 'min:1', 'max:150'],
             'member_registered' => ['required', 'min:1', 'max:150'],
             'reservoir_id' => ['required', 'integer', 'min:1']
         ],
@@ -158,7 +158,7 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        $reservoir = Reservoir::all();
+        $reservoirs = Reservoir::all();
         return view('member.edit', ['member' => $member, 'reservoirs' => $reservoirs]);
     }
 
@@ -176,7 +176,7 @@ class MemberController extends Controller
             'member_name' => ['required', 'min:3', 'max:100', 'alpha'],
             'member_surname' => ['required', 'min:3', 'max:150', 'alpha'],
             'member_live' => ['required', 'min:1', 'max:100'],
-            'member_expriance' => ['required', 'min:1', 'max:150'],
+            'member_experience' => ['required'],
             'member_registered' => ['required', 'min:1', 'max:150'],
             'reservoir_id' => ['required', 'integer', 'min:1']
         ],

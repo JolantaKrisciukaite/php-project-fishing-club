@@ -194,7 +194,7 @@ class ReservoirController extends Controller
     public function destroy(Reservoir $reservoir)
     {
         if($reservoir->reservoirHasMembers->count()){
-            return redirect()->route('reservoir.index')->with('info_message', 'Couldn\'t delete - Reservoir has Member.');
+            return redirect()->route('reservoir.index')->with('info_message', 'Couldn\'t delete - Reservoir still has active Members.');
         }
         $reservoir->delete();
         return redirect()->route('reservoir.index')->with('success_message', 'Reservoir deleted successfully.');

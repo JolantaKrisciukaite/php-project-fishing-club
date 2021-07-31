@@ -6,7 +6,7 @@
             <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="titleBetters">Reservoirs</h3>
+                        <h3 class="titleMenu">Reservoirs</h3>
 
                         <div>
 
@@ -37,6 +37,10 @@
                         </div>
                     </div>
 
+                    <div class="pager-links">
+                        {{ $reservoirs->links() }}
+                    </div>
+
                     <div class="card-body">
                         @foreach ($reservoirs as $reservoir)
                             <div class="index">Title: {{ $reservoir->title }}</div>
@@ -51,6 +55,9 @@
                             <br>
                         @endforeach
 
+                    </div>
+                    <div class="pager-links">
+                        {{ $reservoirs->links() }}
                     </div>
                 </div>
             </div>
