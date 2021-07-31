@@ -11,7 +11,7 @@ class Reservoir extends Model
 
     public function newMemberReservoir()
     {
-        return $this->hasMany('App\Models\Outfit', 'master_id', 'id');
+        return $this->belongsTo('App\Models\Member', 'member_id', 'id');
     }
 
 }
