@@ -99,7 +99,7 @@ class MemberController extends Controller
     public function create()
     {
         $members = Member::orderBy('name')->get();
-        return view('better.create', ['members' => $members]);
+        return view('member.create', ['members' => $members]);
     }
 
     /**
@@ -110,7 +110,32 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),
+        [
+            // 'member_name' => ['required', 'min:3', 'max:100', 'regex:/^[a-ąčęėįšųūžĄČĘĖĮŠŲŪŽ]+$/i'],
+            'member_name' => ['required', 'min:3', 'max:100', 'alpha'],
+            'member_surname' => ['required', 'min:3', 'max:150', 'alpha'],
+            'member_live' => ['required', 'min:1', 'max:100'],
+            'member_expriance' => ['required', 'min:1', 'max:150'],
+            'member_registered' => ['required', 'min:1', 'max:150'],
+            'reservoir_id' => ['required', 'integer', 'min:1']
+        ],
+        );
+        
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
+        $member = new Member;
+        $member->name = $request->member_name;
+        $member->surname = $request->member_surname;
+        $member->live = $request->member_live;
+        $member->experience = $request->member_experience;
+        $member->registered = $request->member_registered;
+        $member->reservoir_id = $request->reservoir_id;
+        $member->save();
+        return redirect()->route('member.index')->with('success_message', 'New Member create.');
     }
 
     /**
