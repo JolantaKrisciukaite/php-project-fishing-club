@@ -41,7 +41,7 @@
                         @foreach ($reservoirs as $reservoir)
                             <div class="index">Title: {{ $reservoir->title }}</div>
                             <div class="index">Area: {{ $reservoir->area }}</div>
-                            <div class="index">About: {{ $reservoir->about }}</div>
+                            <div class="index">About: {!! $reservoir->about !!}</div>
 
                             <form method="POST" action="{{ route('reservoir.destroy', $reservoir) }}">
                                 <a href="{{ route('reservoir.edit', [$reservoir]) }}" class="editButton">Edit</a>

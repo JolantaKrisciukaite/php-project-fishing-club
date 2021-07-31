@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
         foreach (range(1, 20) as $_) {
             DB::table('reservoirs')->insert([
                 'title' => $titles[rand(0, count($titles) - 1)],
-                'area' => rand(1, 300000),
+                'area' => rand(1, 10000),
                 'about' => $faker->realText(300, 5),
             ]);
         }
