@@ -31,6 +31,7 @@ Route::group(['prefix' => 'reservoirs'], function(){
     Route::post('update/{reservoir}', [ReservoirController::class, 'update'])->name('reservoir.update');
     Route::post('delete/{reservoir}', [ReservoirController::class, 'destroy'])->name('reservoir.destroy');
     Route::get('show/{reservoir}', [ReservoirController::class, 'show'])->name('reservoir.show');
+    Route::get('pdf/{reservoir}', [ReservoirController::class, 'pdf'])->name('reservoir.pdf');
 });
 
 Route::group(['prefix' => 'members'], function(){

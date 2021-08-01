@@ -6,6 +6,7 @@ use App\Models\Reservoir;
 use Illuminate\Http\Member;
 use Illuminate\Http\Request;
 use Validator;
+use PDF;
 
 class ReservoirController extends Controller
 {
@@ -132,7 +133,7 @@ class ReservoirController extends Controller
      */
     public function show(Reservoir $reservoir)
     {
-        //
+        return view('reservoir.show', ['reservoir' => $reservoir]);
     }
 
     /**
@@ -239,4 +240,12 @@ class ReservoirController extends Controller
         $reservoir->delete();
         return redirect()->route('reservoir.index')->with('success_message', 'Reservoir deleted successfully.');
     }
+
+    public function pdf(Reservoir $reservoir)
+    {
+        $pdf = PDF::loadView('reservoir.pdf', ['reservoir' => $reservoir]);
+        return $pdf->download($reservoir->title.'.pdf');
+
+    }
+
 }

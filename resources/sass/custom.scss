@@ -8,7 +8,6 @@ body {
 
 .card-body {
 	background-color: #e4fcc1;
-
 }
 
 .card-header {
@@ -33,6 +32,7 @@ body {
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #528009;
+	text-decoration: none;
 }
 
 .editButton:hover {
@@ -65,16 +65,19 @@ body {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #810e05;
     margin-top: 20px;
+	text-decoration: none;
 }
 
 .deleteButton:hover {
 	background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
 	background-color:#c62d1f;
+	text-decoration: none;
 }
 
 .deleteButton:active {
 	position:relative;
 	top:1px;
+	text-decoration: none;
 }
 
 .deleteButtonOutfit {
@@ -93,16 +96,19 @@ body {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #810e05;
     margin-top: 25px;
+	text-decoration: none;
 }
 
 .deleteButtonOutfit:hover {
 	background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
 	background-color:#c62d1f;
+	text-decoration: none;
 }
 
 .deleteButtonOutfit:active {
 	position:relative;
 	top:1px;
+	text-decoration: none;
 }
 
 .addButton {
@@ -121,6 +127,7 @@ body {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #cc9f52;
     margin-top: 7px;
+	text-decoration: none;
 }
 
 .addButtonCreate {
@@ -139,16 +146,19 @@ body {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #cc9f52;
     margin-top: 22px;
+	text-decoration: none;
 }
 
 .addButtonCreate:hover {
 	background:linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
 	background-color:#fb9e25;
+	text-decoration: none;
 }
 
 .addButtonCreate:active {
 	position:relative;
 	top:1px;
+	text-decoration: none;
 }
 
 .aButton {
@@ -167,16 +177,19 @@ body {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #b23e35;
 	margin-top: 22px;
+	text-decoration: none;
 }
 
 .aButton:hover {
 	background:linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
 	background-color:#ce0100;
+	text-decoration: none;
 }
 
 .aButton:active {
 	position:relative;
 	top:1px;
+	text-decoration: none;
 }
 
 ::-webkit-file-upload-button {
@@ -194,14 +207,17 @@ body {
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #9b14b3;
+	text-decoration: none;
 }
 ::-webkit-file-upload-button:hover {
 	background:linear-gradient(to bottom, #a20dbd 5%, #c123de 100%);
 	background-color:#a20dbd;
+	text-decoration: none;
 }
 ::-webkit-file-upload-button:active {
 	position:relative;
 	top:1px;
+	text-decoration: none;
 }
 
 .outfitIndex {
@@ -299,7 +315,6 @@ legend {
 	a {
 		margin-left: 4px;
 	}
-
 }
 
 .fieldset {
@@ -346,5 +361,13 @@ input[type = "file"]{
 	border-radius: 6px;
 	color: #ffffff;
 	background-color: #470153;
+}
+
+.card-show {
+	margin-top: 14px;
+	margin-bottom: 0;
+	text-align: left;
+	font-weight: bold;
+	color: #325200;
 }
 
