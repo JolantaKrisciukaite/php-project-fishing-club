@@ -10336,3 +10336,9 @@ legend {
   width: 80px;
   height: auto;
 }
+
+input[type=file] {
+  border-radius: 6px;
+  color: #ffffff;
+  background-color: #470153;
+}
