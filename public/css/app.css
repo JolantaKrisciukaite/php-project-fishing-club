@@ -10273,12 +10273,12 @@ fieldset input {
 
 .filterBy {
   margin-top: 6px;
-  margin-right: 37px;
+  margin-right: 75px;
 }
 
 .searchBy {
   margin-top: 6px;
-  margin-right: 23px;
+  margin-right: 75px;
 }
 
 legend {
@@ -10335,7 +10335,6 @@ legend {
 .small-photo img {
   width: 80px;
   height: auto;
-  margin-bottom: 9px;
 }
 
 input[type=file] {
