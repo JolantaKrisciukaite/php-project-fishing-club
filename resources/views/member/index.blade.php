@@ -40,7 +40,7 @@
                                     <select class="index" name="reservoir_id"><br>
                                         @foreach ($reservoirs as $reservoir)
                                             <option value="{{ $reservoir->id }}" @if($defaultReservoir == $reservoir->id) selected @endif>
-                                                Reservoir title: {{ $reservoir->title }}
+                                                Title: {{ $reservoir->title }}
                                             </option>
                                         @endforeach
                                     </select>
