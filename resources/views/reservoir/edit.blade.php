@@ -8,7 +8,7 @@
                     <div class="titleReservoir">Edit new reservoir</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('reservoir.update', $reservoir) }}">
+                        <form method="POST" action="{{route('reservoir.update', $reservoir)}}" enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <label>Title:</label>
@@ -21,6 +21,21 @@
                                 <input type="text" name="reservoir_area" class="form-control"
                                     value="{{ old('reservoir_area', $reservoir->area) }}">
                             </div>
+
+                            <div class="form-group">
+                                <div class="small-photo">
+                                     @if($reservoir->photo)
+                                         <img src="{{$reservoir->photo}}">
+                                         <label>Delete photo</label>
+                                         <input type="checkbox" name="delete_reservoir_photo">
+                                     @else
+                                          <img src="{{asset('no-image.png')}}">
+                                     @endif
+                                     <p class="masters">Photo:</p>
+                                     <input type="file" name="reservoir_photo" class="form-control">
+                                 </div>
+                             </div>
+                             
 
                             <div class="form-group">
                                 <label>About:</label>

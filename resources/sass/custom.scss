@@ -300,3 +300,18 @@ legend {
 	background-color: #ADFF2F;
 	color:#ADFF2F;
 }
+
+.photo {
+    img {
+        width: 200px;
+        height: auto;
+    }
+}
+
+.small-photo {
+    img {
+        width: 80px;
+        height: auto;
+    }
+}
+

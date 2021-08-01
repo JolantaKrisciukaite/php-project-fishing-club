@@ -43,6 +43,15 @@
 
                     <div class="card-body">
                         @foreach ($reservoirs as $reservoir)
+
+                        <div class="photo"> 
+                            @if ($reservoir->photo)
+                            <img src="{{$reservoir->photo}}">
+                            @else
+                            <img src="{{asset('no-image.png')}}">
+                            @endif
+                        </div>
+
                             <div class="index">Title: {{ $reservoir->title }}</div>
                             <div class="index">Area: {{ $reservoir->area }}</div>
                             <div class="index">About: {!! $reservoir->about !!}</div>

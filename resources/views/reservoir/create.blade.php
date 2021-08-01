@@ -9,7 +9,7 @@
                     <h3 class="titleReservoir">Create new reservoir</h3>
                    
                     <div class="card-body">
-                        <form method="POST" action="{{ route('reservoir.store') }}">
+                        <form method="POST" action="{{route('reservoir.store')}}" enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <label>Title:</label>
@@ -21,6 +21,11 @@
                                 <label>Area:</label>
                                 <input placeholder="Enter info about reservoir" type="text" name="reservoir_area"
                                     class="form-control" value="{{ old('reservoir_area') }}">
+                            </div>
+
+                            <div class="form-group">
+                                <p class="masters">Photo:</p>
+                                <input type="file" name="reservoir_photo" class="form-control">
                             </div>
 
                             <div class="form-group">

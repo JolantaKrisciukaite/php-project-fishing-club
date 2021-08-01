@@ -121,6 +121,20 @@ class ReservoirController extends Controller
         }
  
         $reservoir = new Reservoir;
+
+        if ($request->has('reservoir_photo')) {
+            $photo = $request->file('reservoir_photo');
+            $imageName = 
+            $request->reservoir_title. '-' .
+            $request->reservoir_area. '-' .
+            time(). '.' .
+            $photo->getClientOriginalExtension();
+            $path = public_path() . '/reservoirs-images/'; // serverio vidinis kelias
+            $url = asset('reservoirs-images/'.$imageName); // url narsyklei (isorinis)
+            $photo->move($path, $imageName); // is serverio tmp ===> i public folderi
+            $reservoir->photo = $url;
+        }
+
         $reservoir->title = $request->reservoir_title;
         $reservoir->area = $request->reservoir_area;
         $reservoir->about = $request->reservoir_about;
@@ -178,6 +192,40 @@ class ReservoirController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
+        if ($request->has('delete_reservoir_photo')){
+            if ($reservoir->photo) {
+                $imageName = explode('/', $reservoir->photo);
+                $imageName = array_pop($imageName);
+                $path = public_path() . '/reservoirs-images/'.$imageName;
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+            }
+                $reservoir->photo = null;
+        }
+
+if ($request->has('reservoir_photo')) {
+		if ($reservoir->photo) {
+                $imageName = explode('/', $reservoir->photo);
+                $imageName = array_pop($imageName);
+                $path = public_path() . '/reservoirs-images/'.$imageName;
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+            }
+
+            $photo = $request->file('reservoir_photo');
+            $imageName = 
+            $request->reservoir_name. '-' .
+            $request->reservoir_wins. '-' .
+            time(). '.' .
+            $photo->getClientOriginalExtension();
+            $path = public_path() . '/reservoirs-images/'; // serverio vidinis kelias
+            $url = asset('reservoirs-images/'.$imageName); // url narsyklei (isorinis)
+            $photo->move($path, $imageName); // is serverio tmp ===> i public folderi
+            $reservoir->photo = $url;
+        }
+
         $reservoir->title = $request->reservoir_title;
         $reservoir->area = $request->reservoir_area;
         $reservoir->about = $request->reservoir_about;
@@ -193,6 +241,16 @@ class ReservoirController extends Controller
      */
     public function destroy(Reservoir $reservoir)
     {
+
+        if ($reservoir->photo) {
+            $imageName = explode('/', $reservoir->photo);
+            $imageName = array_pop($imageName);
+            $path = public_path() . '/reservoirs-images/'.$imageName;
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
+
         if($reservoir->reservoirHasMembers->count()){
             return redirect()->route('reservoir.index')->with('info_message', 'Couldn\'t delete - Reservoir still has active Members.');
         }

@@ -18,6 +18,7 @@ class CreateReservoirsTable extends Migration
             $table->string('title', 200);
             $table->integer('area');
             $table->text('about');
+            $table->string('photo', 200)->nullable(); // nuotrauku idejimas
             $table->timestamps();
         });
     }
