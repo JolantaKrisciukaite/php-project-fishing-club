@@ -186,15 +186,15 @@ class ReservoirController extends Controller
                 $reservoir->photo = null;
         }
 
-if ($request->has('reservoir_photo')) {
-		if ($reservoir->photo) {
-                $imageName = explode('/', $reservoir->photo);
-                $imageName = array_pop($imageName);
-                $path = public_path() . '/reservoirs-images/'.$imageName;
-                if (file_exists($path)) {
-                    unlink($path);
+        if ($request->has('reservoir_photo')) {
+            if ($reservoir->photo) {
+                    $imageName = explode('/', $reservoir->photo);
+                    $imageName = array_pop($imageName);
+                    $path = public_path() . '/reservoirs-images/'.$imageName;
+                    if (file_exists($path)) {
+                        unlink($path);
+                    }
                 }
-            }
 
             $photo = $request->file('reservoir_photo');
             $imageName = 
