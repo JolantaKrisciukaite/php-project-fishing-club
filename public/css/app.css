@@ -10181,7 +10181,7 @@ body {
   top: 1px;
 }
 
-.reservoir_photo {
+::-webkit-file-upload-button {
   box-shadow: inset 0px 1px 0px 0px #e184f3;
   background: linear-gradient(to bottom, #c123de 5%, #a20dbd 100%);
   background-color: #c123de;
@@ -10198,12 +10198,12 @@ body {
   text-shadow: 0px 1px 0px #9b14b3;
 }
 
-.reservoir_photo:hover {
+::-webkit-file-upload-button:hover {
   background: linear-gradient(to bottom, #a20dbd 5%, #c123de 100%);
   background-color: #a20dbd;
 }
 
-.reservoir_photo:active {
+::-webkit-file-upload-button:active {
   position: relative;
   top: 1px;
 }
@@ -10328,7 +10328,8 @@ legend {
 
 .photo img {
   width: 200px;
-  height: auto;
+  height: 200px;
+  margin-bottom: 23px;
 }
 
 .small-photo img {

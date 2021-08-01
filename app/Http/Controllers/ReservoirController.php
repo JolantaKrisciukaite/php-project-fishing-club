@@ -91,7 +91,7 @@ class ReservoirController extends Controller
     {
         $validator = Validator::make($request->all(),
         [
-            'reservoir_title' => ['required', 'min:3', 'max:200', 'alpha'],
+            'reservoir_title' => ['required', 'min:3', 'max:200'],
             'reservoir_area' => ['required'],
             'reservoir_about' => ['required']
         ],
@@ -158,7 +158,7 @@ class ReservoirController extends Controller
         $validator = Validator::make(
             $request->all(),
         [
-            'reservoir_title' => ['required', 'min:3', 'max:200', 'alpha'],
+            'reservoir_title' => ['required', 'min:3', 'max:200'],
             'reservoir_area' => ['required'],
             'reservoir_about' => ['required']
         ],

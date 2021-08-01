@@ -25,7 +25,7 @@
 
                             <div class="form-group">
                                 <p>Photo:</p>
-                                <input type="file" name="reservoir_photo">
+                                <input type="file" name="reservoir_photo" class="reservoir_photo">
                             </div>
 
                             <div class="form-group">
