@@ -29,14 +29,13 @@
                                          <label>Delete photo</label>
                                          <input type="checkbox" name="delete_reservoir_photo">
                                      @else
-                                          <img src="{{asset('no-image.png')}}">
+                                          <img src="{{asset('noImage.jpg')}}">
                                      @endif
-                                     <p class="masters">Photo:</p>
+                                     <p class>Photo:</p>
                                      <input type="file" name="reservoir_photo" class="form-control">
                                  </div>
                              </div>
                              
-
                             <div class="form-group">
                                 <label>About:</label>
                                 <textarea id="summernote" type="text" name="reservoir_about" class="form-control"

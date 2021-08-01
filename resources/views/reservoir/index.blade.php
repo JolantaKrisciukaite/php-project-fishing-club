@@ -48,7 +48,7 @@
                             @if ($reservoir->photo)
                             <img src="{{$reservoir->photo}}">
                             @else
-                            <img src="{{asset('no-image.png')}}">
+                            <img src="{{asset('noImage.jpg')}}">
                             @endif
                         </div>
 

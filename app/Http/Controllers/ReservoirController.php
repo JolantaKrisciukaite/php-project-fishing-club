@@ -58,24 +58,6 @@ class ReservoirController extends Controller
             }
         }
 
-        // // Filtravimas
-
-        // elseif ($request -> reservoir_id) {
-        //     $reservoirs = Reservoir::where('reservoir_id', (int)$request -> reservoir_id) -> paginate(10)->withQueryString();
-        //     $defaultReservoir = (int)$request -> reservoir_id;
-        // }
-
-        // // Paieška
-
-        // elseif ($request -> s) {
-        //     $reservoirs = Reservoir::where('title', 'like', '%'.$request -> s.'%') -> paginate(10)->withQueryString();
-        //     $s = $request -> s;
-        // } 
-        
-        // elseif ($request -> do_search) {
-        //     $reservoirs = Reservoir::where('title', 'like', '') -> paginate(10)->withQueryString();
-        // } 
-        
         else {
             $reservoirs = Reservoir::paginate(10)->withQueryString();
         }
