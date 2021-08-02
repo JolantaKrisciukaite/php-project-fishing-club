@@ -209,11 +209,13 @@ body {
 	text-shadow:0px 1px 0px #9b14b3;
 	text-decoration: none;
 }
+
 ::-webkit-file-upload-button:hover {
 	background:linear-gradient(to bottom, #a20dbd 5%, #c123de 100%);
 	background-color:#a20dbd;
 	text-decoration: none;
 }
+
 ::-webkit-file-upload-button:active {
 	position:relative;
 	top:1px;
