@@ -8,19 +8,19 @@
     <title>PDF</title>
     <style>
         @font-face {
-        font-family: 'Roboto';
+        font-family: 'Rubik';
         font-style: normal;
         font-weight: 400;
-        src: url(<?php echo e(asset('fonts/Roboto-Regular.ttf')); ?>);
+        src: url(<?php echo e(asset('fonts/Rubik-BlackItalic.ttf')); ?>);
         }
         @font-face {
-        font-family: 'Roboto';
+        font-family: 'Rubik';
         font-style: normal;
         font-weight: bold;
-        src: url(<?php echo e(asset('fonts/Roboto-Bold.ttf')); ?>);
+        src: url(<?php echo e(asset('fonts/Rubik-Bold.ttf')); ?>);
         }
         body {
-        font-family: 'Roboto';
+        font-family: 'Rubik';
         }
         </style>
 

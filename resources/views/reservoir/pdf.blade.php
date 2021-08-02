@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <title>PDF</title>
-    <style>
+
+    {{-- <style>
         @font-face {
         font-family: 'Rubik';
         font-style: normal;
         font-weight: 400;
-        src: url({{ asset('fonts/Rubik-Regular.ttf') }});
+        src: url({{ asset('fonts/Rubik/Rubik-Regular.ttf') }});
         }
         @font-face {
         font-family: 'Rubik';
         font-style: normal;
         font-weight: bold;
-        src: url({{ asset('fonts/Rubik-Bold.ttf') }});
+        src: url({{ asset('fonts/Rubik/Rubik-Bold.ttf') }});
         }
         body {
         font-family: 'Rubik';
         }
-        </style>
+        </style> --}}
 
 </head>
 <body>
