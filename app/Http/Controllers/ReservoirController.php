@@ -245,7 +245,6 @@ class ReservoirController extends Controller
     {
         $pdf = PDF::loadView('reservoir.pdf', ['reservoir' => $reservoir]);
         return $pdf->download($reservoir->title.'.pdf');
-
     }
 
 }

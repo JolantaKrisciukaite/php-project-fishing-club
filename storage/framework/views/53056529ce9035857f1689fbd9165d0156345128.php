@@ -30,7 +30,7 @@
 
                             <div class="form-group">
                                 <label>About:</label>
-                                <textarea id="summernote" placeholder="Enter info about reservoir" type="text"
+                                <textarea id="summernote" type="text"
                                     name="reservoir_about" class="form-control" value="<?php echo e(old('reservoir_about')); ?>"></textarea>
                             </div>
 
