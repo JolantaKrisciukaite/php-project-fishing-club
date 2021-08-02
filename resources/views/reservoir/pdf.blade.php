@@ -8,19 +8,19 @@
     <title>PDF</title>
     <style>
         @font-face {
-        font-family: 'Roboto';
+        font-family: 'Rubik';
         font-style: normal;
         font-weight: 400;
-        src: url({{ asset('fonts/Roboto-Regular.ttf') }});
+        src: url({{ asset('fonts/Rubik-Regular.ttf') }});
         }
         @font-face {
-        font-family: 'Roboto';
+        font-family: 'Rubik';
         font-style: normal;
         font-weight: bold;
-        src: url({{ asset('fonts/Roboto-Bold.ttf') }});
+        src: url({{ asset('fonts/Rubik-Bold.ttf') }});
         }
         body {
-        font-family: 'Roboto';
+        font-family: 'Rubik';
         }
         </style>
 
