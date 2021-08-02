@@ -44,8 +44,8 @@
                             <select class="index" name="reservoir_id"><br>
                                 @foreach ($reservoirs as $reservoir)
                                     <option value="{{ $reservoir->id }}">
-                                        Name: {{ $reservoir->name }} 🖐 
                                         Title: {{ $reservoir->title }} 🐬
+                                        Area: {{ $reservoir->area }} (km2) 🖐 
                                     </option>
                                 @endforeach
                             </select>

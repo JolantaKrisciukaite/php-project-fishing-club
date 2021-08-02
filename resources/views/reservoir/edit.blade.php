@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
                 <div class="card">
-                    <div class="titleReservoir">Edit new reservoir</div>
+                    <div class="titleReservoir">Edit reservoir</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{route('reservoir.update', $reservoir)}}" enctype="multipart/form-data">
@@ -31,7 +31,7 @@
                                      @else
                                           <img src="{{asset('noImage.jpg')}}">
                                      @endif
-                                     <p class>Photo:</p>
+                                     <p>Photo:</p>
                                      <input type="file" name="reservoir_photo">
                                  </div>
                              </div>

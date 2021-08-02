@@ -5,7 +5,7 @@
    <div class="row justify-content-center">
         <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
            <div class="card">
-               <div class="titleReservoir">Edit new member</div>
+               <div class="titleReservoir">Edit member</div>
 
                <div class="card-body">
                 <form method="POST" action="{{route('member.update',[$member])}}">
@@ -39,7 +39,7 @@
                         @foreach ($reservoirs as $reservoir)
                             <option value="{{ $reservoir->id }}">
                                 Title: {{$reservoir->title}} 🐳
-                                Area: {{$reservoir->area}} 💧
+                                Area: {{$reservoir->area}} (km2) 💧
                             </option>
                         @endforeach
                     </select>
