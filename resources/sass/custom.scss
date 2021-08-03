@@ -130,6 +130,18 @@ body {
 	text-decoration: none;
 }
 
+.addButton:hover {
+	background:linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
+	background-color:#fb9e25;
+	text-decoration: none;
+}
+
+.addButton:active {
+	position:relative;
+	top:1px;
+	text-decoration: none;
+}
+
 .addButtonCreate {
 	box-shadow:inset 0px 1px 0px 0px #fce2c1;
 	background:linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
